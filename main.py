@@ -10,6 +10,7 @@ def main():
 
     args = sys.argv[1:]
 
+
     if not args:
         print("AI Code Assistant")
         print('\nUsage: python main.py "your prompt here"')
@@ -25,8 +26,13 @@ def main():
         contents = user_prompt
     )
 
-    print("Prompt tokens:", response.usage_metadata.prompt_token_count)
-    print("Response tokens:", response.usage_metadata.candidates_token_count)
+
+
+    if "--verbose" in sys.argv:
+        print(f"User prompt: {user_prompt}")
+        print(f"Prompt tokens: {response.usage_metadata.prompt_token_count}")
+        print(f"Response tokens: {response.usage_metadata.candidates_token_count}")
+
     print("Response:")
     print(response.text)
 
